@@ -2,7 +2,7 @@ import 'package:filesize/filesize.dart';
 import 'package:flutter/material.dart';
 import '../../models/movie.dart';
 import '../../helpers/asset_helper.dart' as assets;
-import '../navigation/my_drawer.dart';
+import '../drawer/my_drawer.dart';
 
 class MyDataPage extends StatelessWidget {
   const MyDataPage({Key? key}) : super(key: key);

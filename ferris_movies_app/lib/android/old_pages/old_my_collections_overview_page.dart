@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../navigation/my_drawer.dart';
+import '../drawer/my_drawer.dart';
 
 class MyCollectionsOverviewPage extends StatefulWidget {
   const MyCollectionsOverviewPage({Key? key}) : super(key: key);

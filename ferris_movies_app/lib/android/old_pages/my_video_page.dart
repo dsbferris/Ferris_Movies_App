@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_vlc_player/flutter_vlc_player.dart';
 import '../../models/movie.dart';
-import '../navigation/my_drawer.dart';
+import '../drawer/my_drawer.dart';
 
 class MyVideoPage extends StatefulWidget {
   const MyVideoPage({Key? key, required this.movie}) : super(key: key);

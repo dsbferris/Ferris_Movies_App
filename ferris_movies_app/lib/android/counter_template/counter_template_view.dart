@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import '../navigation/my_drawer.dart';
+import '../drawer/my_drawer.dart';
 
-import 'my_data_page.dart';
-
-class MyTemplatePage extends StatefulWidget {
-  const MyTemplatePage({Key? key}) : super(key: key);
+class CounterTemplateView extends StatefulWidget {
+  const CounterTemplateView({Key? key}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -17,11 +15,13 @@ class MyTemplatePage extends StatefulWidget {
 
   final String title = "Flutterino Home Page";
 
+  static const String routeName = "/template";
+
   @override
-  State<MyTemplatePage> createState() => _MyTemplatePageState();
+  State<CounterTemplateView> createState() => _CounterTemplateViewState();
 }
 
-class _MyTemplatePageState extends State<MyTemplatePage> {
+class _CounterTemplateViewState extends State<CounterTemplateView> {
   int _counter = 0;
 
   void _incrementCounter() {
@@ -82,16 +82,6 @@ class _MyTemplatePageState extends State<MyTemplatePage> {
             ),
             const Spacer(
               flex: 1,
-            ),
-            MaterialButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (BuildContext c) => const MyDataPage(),
-                    ));
-              },
-              child: const Text("Push"),
             ),
             const Spacer(
               flex: 3,

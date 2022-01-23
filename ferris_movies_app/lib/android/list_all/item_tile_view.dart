@@ -1,47 +1,10 @@
-import 'package:filesize/filesize.dart';
+import 'package:ferris_movies_app/android/movie/movie_detail_view.dart';
+import 'package:ferris_movies_app/models/movie.dart';
 import 'package:flutter/material.dart';
-import '../../models/movie.dart';
-import '../navigation/my_drawer.dart';
-import 'my_movie_detail_page.dart';
-import '../../helpers/asset_helper.dart' as assets;
+import 'package:filesize/filesize.dart';
 
-class MyListPage extends StatelessWidget {
-  const MyListPage({Key? key}) : super(key: key);
-
-  static Future<List<Movie>> futureMovies = assets.getMoviesFromAsset();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("List Page"),
-      ),
-      drawer: const MyDrawer(),
-      body: FutureBuilder<List<Movie>>(
-        future: futureMovies,
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return ListView.builder(
-              itemCount: snapshot.data!.length,
-              itemBuilder: (context, index) {
-                var movie = snapshot.data![index];
-                return MyListTileItem(movie: movie);
-                //return ListTile(title: Text(movie.name),);
-              },
-            );
-          } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
-          } else {
-            return const CircularProgressIndicator();
-          }
-        },
-      ),
-    );
-  }
-}
-
-class MyListTileItem extends StatelessWidget {
-  const MyListTileItem({Key? key, required this.movie}) : super(key: key);
+class ItemTileView extends StatelessWidget {
+  const ItemTileView({Key? key, required this.movie}) : super(key: key);
 
   final Movie movie;
 
@@ -78,7 +41,7 @@ class MyListTileItem extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => MyMovieDetailPage(movie: movie),
+            builder: (context) => MovieDetailView(movie: movie),
           ),
         );
       },
@@ -93,7 +56,7 @@ class MyListTileItem extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => MyMovieDetailPage(movie: movie),
+            builder: (context) => MovieDetailView(movie: movie),
           ),
         );
       },

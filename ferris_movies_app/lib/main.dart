@@ -1,8 +1,9 @@
 import 'dart:io';
-import 'package:ferris_movies_app/ios/ios_app.dart';
 import 'package:flutter/cupertino.dart' as cup;
 import 'package:flutter/material.dart' as mat;
 
+
+import 'ios/ios_app.dart';
 
 import 'android/android_app.dart';
 import 'android/settings/settings_controller.dart';
