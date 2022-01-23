@@ -1,11 +1,8 @@
-import 'dart:collection';
 import 'dart:io';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'package:ferris_movies_app/ios/ios_app.dart';
+import 'package:flutter/cupertino.dart' as cup;
+import 'package:flutter/material.dart' as mat;
 
-import 'models/movie.dart';
-
-import 'package:flutter/material.dart';
 
 import 'android/android_app.dart';
 import 'android/settings/settings_controller.dart';
@@ -24,9 +21,9 @@ void main() async {
   // SettingsController for changes, then passes it further down to the
   // SettingsView.
   if(Platform.isAndroid) {
-    runApp(MyAndroidApp(settingsController: settingsController));
+    mat.runApp(MyAndroidApp(settingsController: settingsController));
   } else if (Platform.isIOS) {
-    runApp(MyAndroidApp(settingsController: settingsController));
+    cup.runApp(const MyIosApp());
   }
 }
 
@@ -56,30 +53,3 @@ class MyAndroidApp extends StatelessWidget {
 }
 
  */
-
-void sortMoviesAndSeries(List<Movie> allMovies) {
-  List<String?> seriesList = allMovies
-      .where((element) => element.info?.serienName != null)
-      .map((e) => e.info?.serienName)
-      .toSet() //toSet for only distinct values
-      .toList()
-    ..sort();
-
-  var seriesMap = HashMap<String, List<Movie>>();
-  for (var s in seriesList) {
-    if (s != null && s.isNotEmpty) {
-      var moviesOfSeries =
-          allMovies.where((element) => element.info?.serienName == s);
-      if (moviesOfSeries.length > 1) {
-        //Only map those, that contain more then 1 movie
-        seriesMap[s] = moviesOfSeries.toList();
-      }
-    }
-  }
-  var allSeriesValues =
-      seriesMap.values.reduce((value, element) => value += element);
-  var moviesWithoutSeries = List.from(allMovies)
-    ..removeWhere((element) => allSeriesValues.contains(element));
-  assert(
-      allMovies.length == allSeriesValues.length + moviesWithoutSeries.length);
-}
