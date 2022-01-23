@@ -1,9 +1,9 @@
 import 'package:filesize/filesize.dart';
 import 'package:flutter/material.dart';
-import '../models/movie.dart';
+import '../../models/movie.dart';
 import '../navigation/my_drawer.dart';
 import 'my_movie_detail_page.dart';
-import '../helpers/asset_helper.dart' as assets;
+import '../../helpers/asset_helper.dart' as assets;
 
 class MyListPage extends StatelessWidget {
   const MyListPage({Key? key}) : super(key: key);

@@ -13,14 +13,14 @@ class MyDrawer extends StatelessWidget {
           DrawerHeader(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Padding(
+              children: const [
+                Padding(
                   padding: EdgeInsets.all(20),
                   child: Icon(FontAwesomeIcons.ethereum, size: 50),
                 ),
                 Text(
-                  "Flutterino",
-                  style: Theme.of(context).textTheme.headline4,
+                  "Ferris Movies App",
+                  textScaleFactor: 2,
                 ),
               ],
             ),

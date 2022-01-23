@@ -1,29 +1,47 @@
 import 'dart:collection';
+import 'dart:io';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'models/movie.dart';
 
-import 'pages/my_collections_overview_page.dart';
-import 'pages/my_settings_page.dart';
-import 'pages/my_list_page.dart';
-import 'pages/my_video_page.dart';
-import 'pages/my_template_page.dart';
+import 'package:flutter/material.dart';
+
+import 'android/android_app.dart';
+import 'android/settings/settings_controller.dart';
+import 'android/settings/settings_service.dart';
 
 void main() async {
-  runApp(const MyApp());
+  // Set up the SettingsController, which will glue user settings to multiple
+  // Flutter Widgets.
+  final settingsController = SettingsController(SettingsService());
+
+  // Load the user's preferred theme while the splash screen is displayed.
+  // This prevents a sudden theme change when the app is first displayed.
+  await settingsController.loadSettings();
+
+  // Run the app and pass in the SettingsController. The app listens to the
+  // SettingsController for changes, then passes it further down to the
+  // SettingsView.
+  if(Platform.isAndroid) {
+    runApp(MyAndroidApp(settingsController: settingsController));
+  } else if (Platform.isIOS) {
+    runApp(MyAndroidApp(settingsController: settingsController));
+  }
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+
+
+
+/*
+class MyAndroidApp extends StatelessWidget {
+  const MyAndroidApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutterino',
-      theme: ThemeData(
-        primarySwatch: Colors.teal,
-      ),
+      title: 'Ferris Movies App',
       //home: const MyHomePage(title: 'Flutterino Home Page'),
       routes: {
         '/': (context) => const MyTemplatePage(),
@@ -36,6 +54,8 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+ */
 
 void sortMoviesAndSeries(List<Movie> allMovies) {
   List<String?> seriesList = allMovies

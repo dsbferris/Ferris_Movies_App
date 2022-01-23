@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../models/movie.dart';
+import '../../models/movie.dart';
 import 'package:filesize/filesize.dart';
-import '../pages/my_video_page.dart';
+import 'my_video_page.dart';
 
 class MyMovieDetailPage extends StatelessWidget {
   const MyMovieDetailPage({Key? key, required this.movie}) : super(key: key);
